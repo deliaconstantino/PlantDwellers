@@ -3,14 +3,14 @@
 
 ### __Models:__
 
-### _House_
+### _Home_
 - has many plants
 - has many dwellers/users/people who live there (could have just one, but possibility for multiple)
 - has many rooms/spaces - _stretch goal_
 - has a temporate zone
 
 ### _Plant_
-- belongs to a house
+- has one house
 - lives in a certain room - _stretch goal_
 - belongs to a dweller who grew or purchased it
 - has many caretakes/users through it's house
@@ -29,11 +29,13 @@
 ### _Dweller_
 - belongs to a house
 - has many (or one or none) roommates through their house
-- has many (or just one) favorite plant(s)
+- has a favorite plant(s)
 - has many plants he/she purchased or grew
-- has a list of plants they'd like to grow/purchase
+- has a list of plants they'd like to grow/purchase - _stretch_
 
 
 ### __Stretch Goals:__
 - add a Room class so that a house has many rooms/each room belongs to a house & a room has many plants/each plant belongs to a room
 - create a Guest class so a dweller can invite a plant-sitter to access their plant info in order to care for their plants when they are on vacation, etc
+- add validation for home where a user can only access the home to which they belong
+- hook into a search site to auto-populate plant info (scientific name, care info, etc based on common name)
