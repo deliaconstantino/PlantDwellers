@@ -1,0 +1,13 @@
+<h1>See fellow dwellers:</h1>
+
+<ol>
+  <% @dwellers.each do |dweller| %>
+    <li><%= dweller.name %>
+      <ul>
+        <li><%= dweller.favorite_plant %></li>
+        <% if !dweller.home_id.nil? %>
+          <li><%= dweller.home.nickname %></li>
+        <% end %>
+      </ul></li>
+  <% end %>
+</ol
