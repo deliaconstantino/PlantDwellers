@@ -5,11 +5,11 @@ class DwellersController < ApplicationController
     erb :'dwellers/index'
   end
 
-  get '/dwellers/new' do
-    erb :'dwellers/new'
+  get '/signup' do
+    erb :'dwellers/signup'
   end
 
-  post'/dwellers' do
+  post'/signup' do
 
     new_dweller = Dweller.new(name: params[:name], email: params[:email], username: params[:username], password: params[:password], favorite_plant: params[:favorite_plant])
 
@@ -18,7 +18,7 @@ class DwellersController < ApplicationController
       redirect '/dwellers'
     else
 
-      redirect '/dwellers/new'
+      redirect '/dwellers/signup'
     end
 
   end
