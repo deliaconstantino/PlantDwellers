@@ -18,3 +18,7 @@ powder_puff = Plant.create(common_name: "powder puff", scientific_name: "Mammill
 air_plant = Plant.create(common_name: "air plant", scientific_name: "Tillandsia", watering_schedule: "1 per week", location: "bathroom", size: "small", category: "flower", dweller_id: sam.id)
 oregano = Plant.create(common_name: "oregano", scientific_name: "Origanum vulgare", watering_schedule: "3 per week", rotation_schedule: "1 per month", fertilization_schedule: "1 per season", location: "porch", size: "small", category: "herb", dweller_id: caroline.id)
 orchid = Plant.create(common_name: "orchid", scientific_name: "Orchidaceae", watering_schedule: "1 per month", rotation_schedule: "1 per season", fertilization_schedule: "1 per season", location: "bedroom", size: "medium", category: "flower", dweller_id: clare.id)
+
+
+#example person-no home
+#name: "tim",  email: "tim@ex.com", username: "timtim", password: "tim123", favorite_plant: "mint", home_id: -)

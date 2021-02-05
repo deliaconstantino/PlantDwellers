@@ -3,8 +3,10 @@
 ## Dwellers
 ### Dwellers/signup
 - user enters all info except their house
-  - upon successful signup they are redirected to their ind show page: dwellers/show/:id
-  - Ind show page shows info they included and has links to add a house to their account, add plants, or link to edit their account page
+  - upon successful signup they are routed to their ind show page: dwellers/show
+
+###Dwellers/show.erb
+- Ind show page shows info they included and has links to add a house to their account, add plants, or link to edit their account page
 
 ### Dwellers/edit/:id
 - displays the signup page and allows edits

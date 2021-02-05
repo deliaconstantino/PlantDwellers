@@ -1,0 +1,25 @@
+
+<h1>Welcome, <%= @dweller.name.humanize %></h1>
+
+<p>Your contact info: <%= @dweller.email %></p>
+<p>Your favorite plant is <%= @dweller.favorite_plant %>!</p>
+
+<br>
+<h2>Your Home:</h2>
+<% if !@dweller.home_id.blank? %>
+ <h3>You live in <%= @dweller.home.nickname %> house!</h3>
+<% else %>
+  <h3>Add a home to your account here!</h3>
+  <% end %>
+
+<br>
+
+<h2>Your Plants: </h2>
+<% if @dweller.plants.empty? %>
+<h3>You don't have any plants yet.</h3>
+<h3>Click here to add some!</h3>
+<% else %>
+  <% @dweller.plants.each do |plant| %>
+  <p><%= plant.common_name %></p>
+  <% end %>
+<% end %>
