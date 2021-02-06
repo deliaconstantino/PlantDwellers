@@ -35,3 +35,36 @@
 
 ### Plants/show/:id
 - lists all plant info except owner or home
+
+
+schema:
+create_table "dwellers", force: :cascade do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "username"
+    t.string  "password_digest"
+    t.string  "favorite_plant"
+    t.integer "home_id"
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.integer "hardiness_zone"
+    t.string  "city"
+    t.string  "nickname"
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string   "common_name"
+    t.string   "scientific_name"
+    t.string   "watering_schedule"
+    t.string   "rotation_schedule"
+    t.string   "fertilization_schedule"
+    t.string   "location"
+    t.string   "size"
+    t.string   "category"
+    t.integer  "dweller_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+end

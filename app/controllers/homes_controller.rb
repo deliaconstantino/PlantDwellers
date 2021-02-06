@@ -26,7 +26,8 @@ class HomesController < ApplicationController
     home = Home.new(params)
     if home.save
       dweller
-    binding.pry
+    # binding.pry
+    end
   end
 
 
