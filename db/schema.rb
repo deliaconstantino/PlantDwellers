@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210204202042) do
+ActiveRecord::Schema.define(version: 20210205220251) do
 
   create_table "dwellers", force: :cascade do |t|
     t.string  "name"
@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20210204202042) do
 
   create_table "homes", force: :cascade do |t|
     t.integer "hardiness_zone"
+    t.string  "city"
     t.string  "nickname"
-    t.string  "address"
   end
 
   create_table "plants", force: :cascade do |t|

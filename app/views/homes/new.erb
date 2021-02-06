@@ -1,0 +1,31 @@
+<h1>Join a Home</h1>
+<br>
+<% @homes.each do |home| %>
+  <p>
+  <input type="radio" name="home[nickname]" id="nickname" value="<%= home.nickname %>">
+  <label for="nickname"><%= home.nickname %></label
+  </p>
+<% end %>
+
+<h3>or</h3>
+
+<h1>Create a New Home:</h1>
+<br>
+<form action="/homes/new" method="post">
+  <p>
+    <label for="nickname">Nickname: </label>
+  <input type="text" name="nickname" id="nickname">
+  </p>
+
+  <p>
+    <label for="city">Located in: </label>
+    <input type="text" name="city" id="city" value="city">
+  </p>
+
+  <p>
+  <label for="hardiness_zone">Hardiness zone: </label>
+  <input type="text" name="hardiness_zone" id="hardiness_zone" value="enter number 1-13">
+  </p>
+
+  <input type="submit" value="Create Home">
+</form>
