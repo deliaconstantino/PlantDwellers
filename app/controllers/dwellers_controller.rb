@@ -27,6 +27,7 @@ class DwellersController < ApplicationController
 
   post '/login' do
     dweller = Dweller.find_by(username: params[:username])&.authenticate(params[:password])
+    # binding.pry
     if dweller
       session[:user_id] = dweller.id
       redirect "dwellers/#{dweller.id}"

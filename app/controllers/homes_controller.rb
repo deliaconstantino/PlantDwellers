@@ -30,5 +30,22 @@ class HomesController < ApplicationController
     end
   end
 
+  get '/homes/:id' do
+    if !Helpers.is_logged_in?(session)
+      #add flash message here: must be logged in to see this info
+      redirect '/login'
+    else
+      @dweller = Helpers.current_user(session)
+      @home = Home.find(params[:id])
+      if @home.dwellers.include?(@dweller)
+      # if Helpers.current_user(session).id == params[:id].to_i
+        erb :'homes/show'
+      else
+        #flash you don't have access to this account, please visit your own
+        redirect '/homes'
+      end
+    end
+  end
+
 
 end

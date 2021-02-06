@@ -1,9 +1,9 @@
 @media screen {
   /* --- Reset Styles --- */
   * {
-    list-style: none;
+    /* list-style: none; */
     margin: 0;
-    padding: 0;
+    /* padding: 0; */
   }
 
   html, body {
@@ -17,6 +17,10 @@
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
+  }
+
+  th {
+    text-align: left;
   }
 
   .wrapper {
@@ -112,4 +116,6 @@
     font-size: 18px;
     line-height: 24px;
   }
+
+
 }

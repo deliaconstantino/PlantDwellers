@@ -1,0 +1,54 @@
+<h1>Welcome home, <%= @dweller.name.humanize %></h1>
+
+<br>
+
+<h3>Your home&#39;s plants are: </h3>
+<table style="width:100%">
+  <tr>
+    <th>Common Name</th>
+    <th>Scientific Name</th>
+    <th>Category</th>
+    <th>Size</th>
+  </tr>
+  <tr>
+    <% @home.plants.uniq.each do |plant| %>
+      <td><%= plant.common_name %></td>
+      <td><%= plant.scientific_name %></td>
+      <td><%= plant.category %></td>
+      <td><%= plant.size %></td>
+    </tr>
+    <% end %>
+  </table>
+
+<br>
+
+<h3>Plant Care Schedule</h3>
+<table style="width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Watering Schedule</th>
+    <th>Rotation Schedule</th>
+    <th>Fertilization Schedule</th>
+    <th>Location</th>
+  </tr>
+  <tr>
+    <% @home.plants.each do |plant| %>
+      <td><%= plant.common_name %></td>
+      <td><%= plant.watering_schedule%></td>
+      <td><%= plant.rotation_schedule %></td>
+      <td><%= plant.fertilization_schedule %></td>
+      <td><%= plant.location %></td>
+    </tr>
+    <% end %>
+  </table>
+
+<br>
+
+<h3>You share this home with: </h3>
+<ul>
+  <% @home.dwellers.each do |dweller| %>
+    <% if dweller != @dweller %>
+      <li><%= dweller.name.humanize %></li>
+    <% end %>
+  <% end %>
+</ul>
