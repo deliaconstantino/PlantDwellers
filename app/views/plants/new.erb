@@ -1,0 +1,103 @@
+<h1>Enter a new plant here: </h1>
+<br>
+<form action="/plants" method="post">
+  <p>
+    <label for="common_name">Common Name: </label>
+    <input type="text" name="common_name" id="common_name">
+  </p>
+
+  <p>
+    <label for="scientific_name">Scientific Name: </label>
+    <input type="text" name="scientific_name" id="scientific_name">
+  </p>
+
+  <p>
+    <label for="location">Location in Home: </label>
+    <input type="text" name="location" id="location">
+  </p>
+
+  <p>
+  <label for="category">Plant Category: </label>
+  <input type="text" name="category" id="category" value="herb, cactus, etc">
+  </p>
+
+
+  <p>Size:
+    <select name="size">
+    <option value = "small">small</option>
+    <option value = "medium">medium</option>
+    <option value = "large">large</option>
+  </select></p>
+
+  <p>Watering Schedule:
+         <select name="watering_schedule[value]">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">4</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+         </select>
+        time(s) per
+         <select name="watering_schedule[freguency]">
+            <option value = "day">day</option>
+            <option value = "week">week</option>
+            <option value = "month">month</option>
+            <option value = "season">season</option>
+         </select></p>
+
+  <p>Fertilization Schedule:
+         <select name="fertilization_schedule[value]">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">4</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+         </select>
+        time(s) per
+         <select name="fertilization_schedule[freguency]">
+            <option value = "day">day</option>
+            <option value = "week">week</option>
+            <option value = "month">month</option>
+            <option value = "season">season</option>
+         </select></p>
+
+  <p>Rotation Schedule:
+         <select name="rotation_schedule[value]">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">4</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+         </select>
+        time(s) per
+         <select name="rotation_schedule[freguency]">
+            <option value = "day">day</option>
+            <option value = "week">week</option>
+            <option value = "month">month</option>
+            <option value = "season">season</option>
+         </select></p>
+
+  <p>
+    <label for="add_to_home">Add this plant to your collection at <%= @dweller.home.nickname %>, <%= @dweller.name %>?</label>
+    <br>
+    <input type="radio" name="add_to_home" id="add_to_home" value="yes"> yes
+    <input type="radio" name="add_to_home" id="add_to_home" value="no"> no
+  </p>
+
+  <button type="submit">Create!</button>
+</form>

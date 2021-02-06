@@ -1,0 +1,31 @@
+<h1><%= @plant.common_name.humanize %></h1>
+
+<h2><%= @plant.scientific_name %></h2>
+
+<br>
+<h3>Popular in these hardiness zones: </h3>
+<% if !@homes.empty? %>
+  <% @homes.each do |home| %>
+    <p><%= home.hardiness_zone %>;</p>
+  <% end %>
+<% else %>
+  <p>No PlantDweller users have planted this yet. Click here to add this to your home!</p>
+<% end %>
+
+<br>
+
+<h3>Plant Care Schedule</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Watering Schedule</th>
+    <th>Rotation Schedule</th>
+    <th>Fertilization Schedule</th>
+  </tr>
+  <tr>
+      <td><%= @plant.common_name %></td>
+      <td><%= @plant.watering_schedule%></td>
+      <td><%= @plant.rotation_schedule %></td>
+      <td><%= @plant.fertilization_schedule %></td>
+    </tr>
+  </table>
