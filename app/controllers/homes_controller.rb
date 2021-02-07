@@ -1,8 +1,13 @@
 class HomesController < ApplicationController
 
   get '/homes' do
-    @homes = Home.all
-    erb :'homes/index'
+    if !Helpers.is_logged_in?(session)
+      #add flash message here: must be logged in to see this info
+      redirect '/login'
+    else
+      @homes = Home.all
+      erb :'homes/index'
+    end
   end
 
   get '/homes/new' do

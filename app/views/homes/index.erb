@@ -5,8 +5,9 @@
     <li><%= home.nickname %></li>
       <ul>
         <% home.plants.each do |plant| %>
-          <li><%= plant.common_name %> - <%= plant.scientific_name %></li>
+          <li><a href="/plants/<%= plant.id %>"><%= plant.common_name.humanize %></a> - <%= plant.scientific_name %></li>
           <% end %>
+      <br>
     </ul>
   <% end %>
 </ul>

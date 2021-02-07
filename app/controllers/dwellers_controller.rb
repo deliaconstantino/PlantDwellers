@@ -22,7 +22,12 @@ class DwellersController < ApplicationController
   end
 
   get '/login' do
-    erb :'dwellers/login'
+    if  Helpers.is_logged_in?(session)
+      @dweller = Helpers.current_user(session)
+      erb :'dwellers/show'
+    else
+      erb :'dwellers/login'
+    end
   end
 
   post '/login' do
@@ -31,6 +36,7 @@ class DwellersController < ApplicationController
     if dweller
       session[:user_id] = dweller.id
       redirect "dwellers/#{dweller.id}"
+      erb :'dwellers/show'
     else
       #flash message, please enter correct password and username
       redirect '/login'

@@ -1,9 +1,9 @@
 <h1><%= @plant.common_name.humanize %></h1>
 
-<h2><%= @plant.scientific_name %></h2>
+<h3><%= @plant.scientific_name %></h3>
 
 <br>
-<h3>Popular in these hardiness zones: </h3>
+<h2>Popular with PlantDwellers in these hardiness zones: </h2>
 <% if !@homes.empty? %>
   <% @homes.each do |home| %>
     <p><%= home.hardiness_zone %>;</p>
@@ -14,7 +14,7 @@
 
 <br>
 
-<h3>Plant Care Schedule</h3>
+<h2>Plant Care Schedule</h2>
 <table>
   <tr>
     <th>Name</th>
@@ -29,3 +29,7 @@
       <td><%= @plant.fertilization_schedule %></td>
     </tr>
   </table>
+
+  <br>
+
+  <h4>Click <a href="/plants">here</a> to return to full plant list.</h4>
