@@ -39,4 +39,10 @@ class PlantsController < ApplicationController
     end
     erb :'plants/show'
   end
+
+  get '/plants/:id/edit' do
+    #need some validation-can only edit the plants you entered
+    erb :'plants/edit'
+  end
+
 end

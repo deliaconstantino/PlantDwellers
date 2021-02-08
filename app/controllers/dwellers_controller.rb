@@ -78,19 +78,24 @@ class DwellersController < ApplicationController
     end
   end
 
-  get '/dwellers/edit/:id' do
+  get '/dwellers/:id/edit' do
     if !Helpers.is_logged_in?(session)
       #add flash message here: must be logged in to see this info
       redirect '/login'
     else
+      # binding.pry
       @dweller = Helpers.current_user(session)
-      if @dweller.id == session[:user_id]
+      if params[:id].to_i == session[:user_id]
         erb :'dwellers/edit'
       else
         #flash you don't have access to this account, please visit your own
         redirect '/login'
       end
     end
+  end
+
+  patch '/dwellers/:id' do
+    binding.pry
   end
 
 

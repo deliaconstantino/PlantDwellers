@@ -1,1 +1,33 @@
-<h1>dweller edit page</h1>
+<h1>Update Info:</h1>
+
+<form action="/dwellers/<%= @dweller.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+
+  <p>
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" value="<%= @dweller.name %>">
+  </p>
+
+  <p>
+  <label for="email">Email: </label>
+  <input type="text" name="email" id="email" value="<%= @dweller.email %>">
+  </p>
+
+  <p>
+  <label for="username">Username: </label>
+  <input type="text" name="username" id="username" value="<%= @dweller.username %>">
+  </p>
+
+  <p>
+  <label for="password">Password: </label>
+  <input type="text" name="password" id="password">
+  </p>
+
+  <p>
+  <label for="favorite_plant">Favorite Plant: </label>
+  <input type="text" name="favorite_plant" id="favorite_plant" value="<%= @dweller.favorite_plant %>">
+  </p>
+
+  <input type="submit" value="Update Dweller">
+
+</form>
