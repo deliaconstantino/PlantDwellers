@@ -33,7 +33,7 @@ class DwellersController < ApplicationController
   get '/login' do
     if  Helpers.is_logged_in?(session)
       @dweller = Helpers.current_user(session)
-      erb :'dwellers/show'
+      redirect "/dwellers/#{@dweller.id}"
     else
       erb :'dwellers/login'
     end
@@ -45,7 +45,7 @@ class DwellersController < ApplicationController
     if dweller
       session[:user_id] = dweller.id
       redirect "dwellers/#{dweller.id}"
-      erb :'dwellers/show'
+      # erb :'dwellers/show'
     else
       #flash message, please enter correct password and username
       redirect '/login'
@@ -58,6 +58,7 @@ class DwellersController < ApplicationController
       flash[:message] = "Please log in to see your account."
       redirect '/login'
     else
+      # update to @dweller = Dweller.find(params[:id])
       @dweller = Helpers.current_user(session)
       if @dweller.id == session[:user_id]
         erb :'dwellers/show'
@@ -78,6 +79,30 @@ class DwellersController < ApplicationController
     end
   end
 
+  patch '/dwellers/:id' do
+    params
+    binding.pry
+    if !Helpers.is_logged_in?(session)
+      flash[:message] = "Please log in to see your account."
+      redirect '/login'
+    else
+      dweller = Dweller.find(params[:id])
+      if dweller.id == session[:user_id]
+        if dweller.update(name: params[:name], email: params[:email], favorite_plant: params[:favorite_plant])
+          dweller.update(password: params[:password]) if !params[:password].blank?
+          redirect "/dwellers/#{dweller.id}"
+        else
+          flash[:message] = ["Please enter unique information:"]
+          dweller.errors.full_messages.each do |message|
+            flash[:message] << message
+          end
+          redirect "/dwellers/#{dweller.id}/edit"
+        end
+      end
+    end
+
+  end
+
   get '/dwellers/:id/edit' do
     if !Helpers.is_logged_in?(session)
       #add flash message here: must be logged in to see this info
@@ -94,9 +119,8 @@ class DwellersController < ApplicationController
     end
   end
 
-  patch '/dwellers/:id' do
-    binding.pry
-  end
+
+
 
 
 end

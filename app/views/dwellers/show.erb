@@ -7,6 +7,8 @@
   <p>Your favorite plant is <%= @dweller.favorite_plant %>!</p>
 <% end %>
 
+<h3><a href="/dwellers/<%= @dweller.id %>/edit">Edit</a> your profile?</h3>
+
 <br>
 <% if !@dweller.home_id.blank? %>
   <h2> You live in <%= @dweller.home.nickname %> house!</h2>
@@ -19,8 +21,7 @@
 
 <h2>Your Plants: </h2>
 <% if @dweller.plants.empty? %>
-<h3>You don't have any plants yet.</h3>
-<h3>Click <a href="/plants/new">here</a> to add some!</h3>
+  <h3>You don't have any plants yet.</h3>
 <% else %>
   <ul>
     <% @dweller.plants.each do |plant| %>
@@ -29,4 +30,4 @@
   </ul>
 <% end %>
 
-<h3>Add another <a href="/plants/new">plant</a> to your home?</h3>
+<h3>Add a <a href="/plants/new">plant</a> to your home?</h3>

@@ -1,7 +1,14 @@
+<% if flash[:message] %>
+  <% flash[:message].each do |message| %>
+    <%= message %>
+    <br>
+  <% end %>
+<% end %>
+
 <h1>Update Info:</h1>
 
-<form action="/dwellers/<%= @dweller.id %>" method="post">
-  <input type="hidden" id="hidden" name="_method" value="patch">
+<form action="/dwellers/<%= @dweller.id %>" method="POST">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
 
   <p>
     <label for="name">Name: </label>
@@ -20,7 +27,7 @@
 
   <p>
   <label for="password">Password: </label>
-  <input type="text" name="password" id="password">
+  <input type="password" name="password" id="password" placeholder="****************">
   </p>
 
   <p>
@@ -28,6 +35,6 @@
   <input type="text" name="favorite_plant" id="favorite_plant" value="<%= @dweller.favorite_plant %>">
   </p>
 
-  <input type="submit" value="Update Dweller">
+  <input type="submit" value="Update">
 
 </form>
