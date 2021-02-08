@@ -1,4 +1,8 @@
+require 'rack-flash'
+
 class DwellersController < ApplicationController
+  enable :sessions
+  use Rack::Flash
 
   get '/dwellers' do
     @dwellers = Dweller.all
@@ -17,7 +21,8 @@ class DwellersController < ApplicationController
       redirect "/dwellers/#{new_dweller.id}"
     else
       #add flash with errors, need password, user, etc
-      redirect '/dwellers/signup'
+      flash[:message] = "You must fill out all info"
+      redirect '/signup'
     end
   end
 
@@ -61,6 +66,13 @@ class DwellersController < ApplicationController
   end
 
   get '/logout' do
+    if !Helpers.is_logged_in?(session)
+      #add flash message here: must be logged in to see this info
+      redirect '/login'
+    else
+      session.clear
+      redirect '/login'
+    end
   end
 
   get '/dwellers/edit/:id' do

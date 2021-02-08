@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'bigdecimal', '1.3.5'
 gem 'dotenv'
+gem 'rack-flash3'
 
 group :test do
   gem 'rspec'

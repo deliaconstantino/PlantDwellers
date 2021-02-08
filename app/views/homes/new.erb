@@ -1,11 +1,20 @@
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
 <h1>Join a Home</h1>
 <br>
-<% @homes.each do |home| %>
-  <p>
-  <input type="radio" name="home[nickname]" id="nickname" value="<%= home.nickname %>">
-  <label for="nickname"><%= home.nickname %></label
-  </p>
-<% end %>
+
+<form action="/homes" method="post">
+  <% @homes.each do |home| %>
+    <p>
+    <input type="radio" name="nickname" id="nickname" value="<%= home.nickname %>">
+    <label for="nickname"><%= home.nickname %></label
+    </p>
+  <% end %>
+  <br><br>
+  <input type="submit" value="Join">
+</form>
 
 <h3>or</h3>
 
@@ -22,10 +31,22 @@
     <input type="text" name="city" id="city" value="city">
   </p>
 
-  <p>
-  <label for="hardiness_zone">Hardiness zone: </label>
-  <input type="text" name="hardiness_zone" id="hardiness_zone" value="enter number 1-13">
-  </p>
+  <p>Hardiness Zone:
+         <select name="hardiness_zone">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">4</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+            <option value = "11">11</option>
+            <option value = "12">12</option>
+            <option value = "13">13</option>
+         </select></p>
 
   <input type="submit" value="Create Home">
 </form>

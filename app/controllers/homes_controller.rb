@@ -28,11 +28,25 @@ class HomesController < ApplicationController
   end
 
   post '/homes/new' do
+    # binding.pry
     home = Home.new(params)
     if home.save
-      dweller
-    # binding.pry
+      dweller = Helpers.current_user(session)
+      dweller.home = home
+      redirect "/homes/#{home.id}"
+    else
+      flash[:message] = "Please enter a valid home."
+      redirect '/homes/new'
     end
+  end
+
+  get '/homes/:id/edit' do
+    erb :'homes/edit'
+  end
+
+  post '/homes' do
+    binding.pry
+    params
   end
 
   get '/homes/:id' do
