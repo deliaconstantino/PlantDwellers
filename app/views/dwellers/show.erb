@@ -2,7 +2,10 @@
 <h1>Welcome, <%= @dweller.name.humanize %></h1>
 
 <p>Your contact info: <%= @dweller.email %></p>
-<p>Your favorite plant is <%= @dweller.favorite_plant %>!</p>
+
+<% if !@dweller.favorite_plant.blank? %>
+  <p>Your favorite plant is <%= @dweller.favorite_plant %>!</p>
+<% end %>
 
 <br>
 <% if !@dweller.home_id.blank? %>

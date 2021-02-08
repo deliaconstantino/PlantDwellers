@@ -3,7 +3,6 @@
 <% end %>
 
 <h1>Join a Home</h1>
-<br>
 
 <form action="/homes" method="post">
   <% @homes.each do |home| %>
@@ -16,10 +15,12 @@
   <input type="submit" value="Join">
 </form>
 
+<br>
+
 <h3>or</h3>
 
 <h1>Create a New Home:</h1>
-<br>
+
 <form action="/homes/new" method="post">
   <p>
     <label for="nickname">Nickname: </label>
@@ -37,7 +38,7 @@
             <option value = "2">2</option>
             <option value = "3">3</option>
             <option value = "4">4</option>
-            <option value = "5">4</option>
+            <option value = "5">5</option>
             <option value = "6">6</option>
             <option value = "7">7</option>
             <option value = "8">8</option>

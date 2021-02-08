@@ -17,7 +17,7 @@ class PlantsController < ApplicationController
   end
 
   post '/plants' do
-    # binding.pry
+    binding.pry
     if !Helpers.is_logged_in?(session)
       #add flash message here: must be logged in to see this info
       redirect '/login'

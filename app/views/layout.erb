@@ -16,11 +16,13 @@
   </head>
   <body>
     <header>
-      <div class="topnav">
-        <a href="/logout">Log out</a>
-        <a href="/homes">Homes</a>
-        <a href="/plants">Plants</a>
-      </div>
+      <% if Helpers.is_logged_in?(session) %>
+        <div class="topnav">
+          <a href="/logout">Logout</a>
+          <a href="/homes">Your Home</a>
+          <a href="/plants">All Plants</a>
+        </div>
+      <% end %>
     </header>
 
     <div class="wrapper">

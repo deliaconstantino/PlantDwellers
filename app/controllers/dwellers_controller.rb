@@ -14,16 +14,20 @@ class DwellersController < ApplicationController
   end
 
   post'/signup' do
-    new_dweller = Dweller.new(name: params[:name], email: params[:email], username: params[:username], password: params[:password], favorite_plant: params[:favorite_plant])
+    new_dweller = Dweller.new(params)
 
     if new_dweller.save
       session[:user_id] = new_dweller.id
       redirect "/dwellers/#{new_dweller.id}"
     else
-      #add flash with errors, need password, user, etc
-      flash[:message] = "You must fill out all info"
+      flash[:message] = ["Please enter unique information:"]
+      new_dweller.errors.each do |key, value|
+        flash[:message] << "#{key} #{value}"
+      end
       redirect '/signup'
     end
+
+
   end
 
   get '/login' do
@@ -51,12 +55,11 @@ class DwellersController < ApplicationController
 
   get '/dwellers/:id' do
     if !Helpers.is_logged_in?(session)
-      #add flash message here: must be logged in to see this info
+      flash[:message] = "Please log in to see your account."
       redirect '/login'
     else
       @dweller = Helpers.current_user(session)
       if @dweller.id == session[:user_id]
-      # if Helpers.current_user(session).id == params[:id].to_i
         erb :'dwellers/show'
       else
         #flash you don't have access to this account, please visit your own
@@ -71,7 +74,7 @@ class DwellersController < ApplicationController
       redirect '/login'
     else
       session.clear
-      redirect '/login'
+      redirect '/'
     end
   end
 

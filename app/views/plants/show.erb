@@ -23,13 +23,13 @@
     <th>Fertilization Schedule</th>
   </tr>
   <tr>
-      <td><%= @plant.common_name %></td>
-      <td><%= @plant.watering_schedule%></td>
-      <td><%= @plant.rotation_schedule %></td>
-      <td><%= @plant.fertilization_schedule %></td>
-    </tr>
+    <td><%= @plant.common_name.humanize %></td>
+    <% water = @plant.watering_schedule.split("\"") %>
+    <td><%= water[3] %> time(s) per <%= water[7] %></td>
+    <% rotation = @plant.rotation_schedule.split("\"") %>
+    <td><%= rotation[3] %> time(s) per <%= rotation[7] %></td>
+    <% fertilize = @plant.fertilization_schedule.split("\"") %>
+    <td><%= fertilize[3] %> time(s) per <%= fertilize[7] %></td>
+  </tr>
+
   </table>
-
-  <br>
-
-  <h4>Click <a href="/plants">here</a> to return to full plant list.</h4>

@@ -3,5 +3,6 @@ class Dweller < ActiveRecord::Base
   belongs_to :home
   has_many :plants
 
-  validates :name, :email, :username, :password, presence: true
+  validates :name, :email, :username, presence: true
+  validates :email, :username, uniqueness: true
 end

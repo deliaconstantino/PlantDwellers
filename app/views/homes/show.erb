@@ -23,34 +23,43 @@
   </table>
 
 <br>
-
-<h2>Plant Care Schedule</h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Watering Schedule</th>
-    <th>Rotation Schedule</th>
-    <th>Fertilization Schedule</th>
-    <th>Location</th>
-  </tr>
-  <tr>
-    <% @home.plants.each do |plant| %>
-      <td><%= plant.common_name %></td>
-      <td><%= plant.watering_schedule%></td>
-      <td><%= plant.rotation_schedule %></td>
-      <td><%= plant.fertilization_schedule %></td>
-      <td><%= plant.location %></td>
-    </tr>
-    <% end %>
-  </table>
+<h3>Add <a href="/plants/new">plants</a>?</h3>
 
 <br>
 
-<h3>You share this home with: </h3>
-<ul>
-  <% @home.dwellers.each do |dweller| %>
-    <% if dweller != @dweller %>
-      <li><%= dweller.name.humanize %></li>
+<% if !@home.plants.empty? %>
+  <h2>Plant Care Schedule</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Watering Schedule</th>
+        <th>Rotation Schedule</th>
+        <th>Fertilization Schedule</th>
+        <th>Location</th>
+      </tr>
+      <tr>
+        <% @home.plants.each do |plant| %>
+          <td><%= plant.common_name %></td>
+          <% water = plant.watering_schedule.split("\"") %>
+          <td><%= water[3] %> time(s) per <%= water[7] %></td>
+          <% rotation = plant.rotation_schedule.split("\"") %>
+          <td><%= rotation[3] %> time(s) per <%= rotation[7] %></td>
+          <% fertilize = plant.fertilization_schedule.split("\"") %>
+          <td><%= fertilize[3] %> time(s) per <%= fertilize[7] %></td>
+          <td><%= plant.location %></td>
+        </tr>
+        <% end %>
+    </table>
+<% end %>
+<br>
+
+<% if @home.dwellers.count > 1 %>
+  <h3>You share this home with: </h3>
+  <ul>
+    <% @home.dwellers.each do |dweller| %>
+      <% if dweller != @dweller %>
+        <li><%= dweller.name.humanize %></li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+<% end %>
