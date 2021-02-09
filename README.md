@@ -30,6 +30,6 @@ PlantDwellers is now ready to use. Enter your information or seed the database w
 
 
 ### Additional
-[]
-[License] (LICENSE)
+[Contributing] (CONTRIBUTING.md)
+[License] (LICENSE.md)
 [Spec] (Spec.md)
