@@ -41,10 +41,6 @@ class HomesController < ApplicationController
     end
   end
 
-  get '/homes/:id/edit' do
-    erb :'homes/edit'
-  end
-
   post '/homes' do
     if !Helpers.is_logged_in?(session)
       redirect '/login'

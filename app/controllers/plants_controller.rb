@@ -37,6 +37,26 @@ class PlantsController < ApplicationController
     erb :'plants/show'
   end
 
+  get '/plants/:id/edit' do
+    @plant = Plant.find(params[:id])
+
+    if !Helpers.is_logged_in?(session)
+      redirect '/login'
+    else
+      if Helpers.current_user(session).plants.include?(@plant)
+        erb :'plants/edit'
+      else
+        redirect '/plants'
+      end
+    end
+  end
+
+  patch '/plants/:id' do
+    plant = Plant.find(params[:id])
+    plant.update(common_name: params[:common_name], scientific_name: params[:scientific_name], category: params[:category], size: params[:size], watering_schedule: params[:watering_schedule], rotation_schedule: params[:rotation_schedule], fertilization_schedule: params[:fertilization_schedule])
+    redirect "/plants/#{plant.id}"
+  end
+
   delete '/plants/:id' do
     plant = Plant.find(params[:id])
     plant.destroy

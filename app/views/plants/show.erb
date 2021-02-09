@@ -9,7 +9,7 @@
     <p><%= home.hardiness_zone %>;</p>
   <% end %>
 <% else %>
-  <p>No PlantDweller users have planted this yet. Click here to add this to your home!</p>
+  <p>No PlantDwellers have planted this yet.</p>
 <% end %>
 
 <br>
@@ -38,8 +38,11 @@
   <br>
 
   <% if @plant.dweller == @dweller %>
+    <h4>Edit plant <a href="/plants/<%= @plant.id %>/edit">here</a></h4>
+    <p>or</p>
+    <h4>Click to delete</h4>
     <form action="/plants/<%= @plant.id %>" method="post">
       <input id="hidden" type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
-    </form></p>
+    </form>
   <% end %>
