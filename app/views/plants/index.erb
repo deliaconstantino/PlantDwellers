@@ -1,10 +1,13 @@
 <h1>PLANTS!  PLANTS!  PLANTS!</h1>
 
-<br>
-
 <h3>Plant List: </h3>
+
 <ul>
   <% @plants.each do |plant| %>
     <li><a href="/plants/<%= plant.id %>"><%= plant.common_name %></a></li>
   <% end %>
 </ul>
+
+<br>
+
+<h3><a href="/plants/new">Create</a> new plant?</h3>

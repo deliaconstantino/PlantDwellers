@@ -25,7 +25,7 @@
 <% else %>
   <ul>
     <% @dweller.plants.each do |plant| %>
-      <li><%= plant.common_name.humanize %></li>
+      <li><a href="/plants/<%= plant.id %>"><%= plant.common_name.humanize %></a></li>
     <% end %>
   </ul>
 <% end %>

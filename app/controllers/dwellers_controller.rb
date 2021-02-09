@@ -4,11 +4,6 @@ class DwellersController < ApplicationController
   enable :sessions
   use Rack::Flash
 
-  get '/dwellers' do
-    @dwellers = Dweller.all
-    erb :'dwellers/index'
-  end
-
   get '/signup' do
     erb :'dwellers/signup'
   end
@@ -26,8 +21,6 @@ class DwellersController < ApplicationController
       end
       redirect '/signup'
     end
-
-
   end
 
   get '/login' do
@@ -41,13 +34,11 @@ class DwellersController < ApplicationController
 
   post '/login' do
     dweller = Dweller.find_by(username: params[:username])&.authenticate(params[:password])
-    # binding.pry
     if dweller
       session[:user_id] = dweller.id
       redirect "dwellers/#{dweller.id}"
-      # erb :'dwellers/show'
     else
-      #flash message, please enter correct password and username
+      flash[:message] = "Please enter correct username and password."
       redirect '/login'
     end
 
@@ -58,12 +49,10 @@ class DwellersController < ApplicationController
       flash[:message] = "Please log in to see your account."
       redirect '/login'
     else
-      # update to @dweller = Dweller.find(params[:id])
       @dweller = Helpers.current_user(session)
       if @dweller.id == session[:user_id]
         erb :'dwellers/show'
       else
-        #flash you don't have access to this account, please visit your own
         redirect '/login'
       end
     end
@@ -71,7 +60,6 @@ class DwellersController < ApplicationController
 
   get '/logout' do
     if !Helpers.is_logged_in?(session)
-      #add flash message here: must be logged in to see this info
       redirect '/login'
     else
       session.clear
@@ -80,8 +68,6 @@ class DwellersController < ApplicationController
   end
 
   patch '/dwellers/:id' do
-    params
-    binding.pry
     if !Helpers.is_logged_in?(session)
       flash[:message] = "Please log in to see your account."
       redirect '/login'
@@ -105,22 +91,15 @@ class DwellersController < ApplicationController
 
   get '/dwellers/:id/edit' do
     if !Helpers.is_logged_in?(session)
-      #add flash message here: must be logged in to see this info
       redirect '/login'
     else
-      # binding.pry
       @dweller = Helpers.current_user(session)
       if params[:id].to_i == session[:user_id]
         erb :'dwellers/edit'
       else
-        #flash you don't have access to this account, please visit your own
         redirect '/login'
       end
     end
   end
-
-
-
-
 
 end
