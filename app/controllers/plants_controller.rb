@@ -29,6 +29,7 @@ class PlantsController < ApplicationController
   end
 
   get '/plants/:id' do
+    # binding.pry
     @dweller = Helpers.current_user(session)
     @plant = Plant.find(params[:id])
     @homes = Home.all.select do |home|

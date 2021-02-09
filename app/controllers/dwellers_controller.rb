@@ -67,39 +67,4 @@ class DwellersController < ApplicationController
     end
   end
 
-  patch '/dwellers/:id' do
-    if !Helpers.is_logged_in?(session)
-      flash[:message] = "Please log in to see your account."
-      redirect '/login'
-    else
-      dweller = Dweller.find(params[:id])
-      if dweller.id == session[:user_id]
-        if dweller.update(name: params[:name], email: params[:email], favorite_plant: params[:favorite_plant])
-          dweller.update(password: params[:password]) if !params[:password].blank?
-          redirect "/dwellers/#{dweller.id}"
-        else
-          flash[:message] = ["Please enter unique information:"]
-          dweller.errors.full_messages.each do |message|
-            flash[:message] << message
-          end
-          redirect "/dwellers/#{dweller.id}/edit"
-        end
-      end
-    end
-
-  end
-
-  get '/dwellers/:id/edit' do
-    if !Helpers.is_logged_in?(session)
-      redirect '/login'
-    else
-      @dweller = Helpers.current_user(session)
-      if params[:id].to_i == session[:user_id]
-        erb :'dwellers/edit'
-      else
-        redirect '/login'
-      end
-    end
-  end
-
 end

@@ -12,7 +12,7 @@ I have a tendency to over or underwater plants, a tendency which gets worse when
 - Run rake db:migrate
 - Run shotgun to start the server
 
-### Enable Sessions 
+### Enable Sessions
 
 To enable sessions for a more secure expereince, create a `.env` file in the root directory.
 
@@ -27,3 +27,9 @@ Please note: The `.env` file includes sensitive information; it should not be tr
 ### Use
 
 PlantDwellers is now ready to use. Enter your information or seed the database with the command `rake db:seed` to pre-populate with information.
+
+
+### Additional
+[]
+[License] (LICENSE)
+[Spec] (Spec.md)

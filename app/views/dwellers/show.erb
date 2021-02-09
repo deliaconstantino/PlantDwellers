@@ -7,8 +7,6 @@
   <p>Your favorite plant is <%= @dweller.favorite_plant %>!</p>
 <% end %>
 
-<h3><a href="/dwellers/<%= @dweller.id %>/edit">Edit</a> your profile?</h3>
-
 <br>
 <% if !@dweller.home_id.blank? %>
   <h2> You live in <%= @dweller.home.nickname %> house!</h2>
