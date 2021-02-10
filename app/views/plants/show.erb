@@ -24,20 +24,13 @@
   </tr>
   <tr>
     <td><%= @plant.common_name.humanize %></td>
-      <% unless @plant.watering_schedule.nil? %>
-        <% water = @plant.watering_schedule.split("\"")  %>
-        <td><%= water[3] %> time(s) per <%= water[7] %></td>
-      <% end %>
+    <% water = @plant.watering_schedule %>
+    <% rotation = @plant.rotation_schedule %>
+    <% fertilize = @plant.fertilization_schedule %>
 
-      <% unless @plant.rotation_schedule.nil? %>
-        <% rotation = @plant.rotation_schedule.split("\"") %>
-        <td><%= rotation[3] %> time(s) per <%= rotation[7] %></td>
-      <% end %>
-
-      <% unless @plant.fertilization_schedule.nil? %>
-        <% fertilize = @plant.fertilization_schedule.split("\"") %>
-        <td><%= fertilize[3] %> time(s) per <%= fertilize[7] %></td>
-      <% end %>
+    <td><%= water['value'] %> time(s) per <%= water['frequency'] %></td>
+    <td><%= rotation['value'] %> time(s) per <%= rotation['frequency'] %></td>
+    <td><%= fertilize['value'] %> time(s) per <%= fertilize['frequency'] %></td>
     </tr>
   </table>
 

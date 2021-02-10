@@ -18,7 +18,15 @@ class PlantsController < ApplicationController
     if !Helpers.is_logged_in?(session)
       redirect '/login'
     else
-      plant = Plant.create(common_name: params[:common_name], scientific_name: params[:scientific_name], category: params[:category], size: params[:size], watering_schedule: params[:watering_schedule], rotation_schedule: params[:rotation_schedule], fertilization_schedule: params[:fertilization_schedule])
+      plant = Plant.create(
+        common_name: params[:common_name],
+        scientific_name: params[:scientific_name],
+        category: params[:category],
+        size: params[:size],
+        watering_schedule: params[:watering_schedule],
+        rotation_schedule: params[:rotation_schedule],
+        fertilization_schedule: params[:fertilization_schedule]
+      )
       dweller = Helpers.current_user(session)
       if params[:add_to_home] == "yes"
         plant.location = params[:location]
@@ -29,7 +37,6 @@ class PlantsController < ApplicationController
   end
 
   get '/plants/:id' do
-    # binding.pry
     @dweller = Helpers.current_user(session)
     @plant = Plant.find(params[:id])
     @homes = Home.all.select do |home|

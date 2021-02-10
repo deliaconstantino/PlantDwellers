@@ -1,5 +1,4 @@
 class HomesController < ApplicationController
-
   get '/homes' do
     if !Helpers.is_logged_in?(session)
       redirect '/login'
@@ -66,6 +65,4 @@ class HomesController < ApplicationController
       end
     end
   end
-
-
 end

@@ -1,84 +1,112 @@
 <h1>Edit plant: </h1>
 <form action="/plants/<%= @plant.id %>" method="post">
-<input type="hidden" id="hidden" name="_method" value="PATCH">
+  <input type="hidden" id="hidden" name="_method" value="PATCH">
   <p>
     <label for="common_name">Common Name: </label>
     <input type="text" name="common_name" id="common_name" value="<%= @plant.common_name %>">
   </p>
-
-  <br>
 
   <p>
     <label for="scientific_name">Scientific Name: </label>
     <input type="text" name="scientific_name" id="scientific_name" value="<%= @plant.scientific_name %>">
   </p>
 
-  <br>
-
   <p>
     <label for="location">Location in Home: </label>
     <input type="text" name="location" id="location" value="<%= @plant.location %>">
   </p>
-
-  <br>
 
   <p>
   <label for="category">Plant Category: </label>
   <input type="text" name="category" id="category" value="<%= @plant.category %>">
   </p>
 
-
-  <br>
-
-  <p>Size: <input list="sizelist" name="size" value="<%= @plant.size %>"></p>
-  <datalist id="sizelist">
-    <option value="small">
-    <option value="medium">
-    <option value="large">
-  </datalist>
-
-
-  <br>
-
-  <% water = @plant.watering_schedule.split("\"") %>
+  <p>Size:
+    <select name="size">
+      <% ["small", "medium", "large"].each do |size| %>
+        <option
+          <%= 'selected' if @plant.size == size %>
+          value="size"
+        >
+          <%= size %>
+        </option>
+      <% end %>
+    </select></p>
 
   <p>Watering Schedule:
-    <input type="search" list="number_list" name="watering_schedule[value]" value="<%= water[3] %>">time(s) per
-    <input type="search" list="frequency" name="watering_schedule[frequency]" value="<%= water[7] %>">
-  <datalist id="number_list">
-    <option value = "1">1</option>
-    <option value = "2">2</option>
-    <option value = "3">3</option>
-    <option value = "4">4</option>
-    <option value = "5">5</option>
-    <option value = "6">6</option>
-    <option value = "7">7</option>
-    <option value = "8">8</option>
-    <option value = "9">9</option>
-    <option value = "10">10</option>
-  </datalist>
+    <select name="watering_schedule[value]">
+      <% (1..10).each do |i| %>
+        <option
+          <%= @plant.watering_schedule['value'].to_i == i ? 'selected' : '' %>
+          value="<%= i %>"
+        >
+          <%= i %>
+        </option>
+      <% end %>
+    </select>
 
-  <datalist id="frequency">
-  <option value = "day">day</option>
-  <option value = "week">week</option>
-  <option value = "month">month</option>
-  <option value = "season">season</option>
-</datalist></p>
+      time(s) per
 
+    <select name="watering_schedule[frequency]">
+      <% ["day", "week", "month", "season"].each do |freq| %>
+        <option
+          <%= 'selected' if @plant.watering_schedule['frequency'] == freq %>
+          value="freq"
+        >
+          <%= freq %>
+        </option>
+      <% end %>
+    </select></p>
 
-
-  <% rotation = @plant.rotation_schedule.split("\"") %>
   <p>Rotation Schedule:
-      <input type="search" list="number_list" name="rotation_schedule[value]" value="<%= rotation[3] %>">time(s) per
-      <input type="search" list="frequency" name="rotation_schedule[frequency]" value="<%= rotation[7] %>">
-  </p>
+  <select name="rotation_schedule[value]">
+    <% (1..10).each do |i| %>
+      <option
+        <%= @plant.rotation_schedule['value'].to_i == i ? 'selected' : '' %>
+        value="<%= i %>"
+      >
+        <%= i %>
+      </option>
+    <% end %>
+  </select>
 
+    time(s) per
 
-  <% fertilize = @plant.fertilization_schedule.split("\"") %>
+  <select name="rotation_schedule[frequency]">
+    <% ["day", "week", "month", "season"].each do |freq| %>
+      <option
+        <%= 'selected' if @plant.rotation_schedule['frequency'] == freq %>
+        value="freq"
+      >
+        <%= freq %>
+      </option>
+    <% end %>
+  </select></p>
+
   <p>Fertilization Schedule:
-      <input type="search" list="number_list" name="fertilization_schedule[value]" value="<%= fertilize[3] %>">time(s) per
-      <input type="search" list="frequency" name="fertilization_schedule[frequency]" value="<%= fertilize[7] %>">
-  </p>
+  <select name="fertilization_schedule[value]">
+    <% (1..10).each do |i| %>
+      <option
+        <%= @plant.fertilization_schedule['value'].to_i == i ? 'selected' : '' %>
+        value="<%= i %>"
+      >
+        <%= i %>
+      </option>
+    <% end %>
+  </select>
+
+    time(s) per
+
+  <select name="fertilization_schedule[frequency]">
+    <% ["day", "week", "month", "season"].each do |freq| %>
+      <option
+        <%= 'selected' if @plant.fertilization_schedule['frequency'] == freq %>
+        value="freq"
+      >
+        <%= freq %>
+      </option>
+    <% end %>
+  </select></p>
 
   <br>
 

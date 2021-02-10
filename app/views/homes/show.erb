@@ -39,13 +39,15 @@
       </tr>
       <tr>
         <% @home.plants.each do |plant| %>
+          <% water = plant.watering_schedule %>
+          <% rotation = plant.rotation_schedule %>
+          <% fertilize = plant.fertilization_schedule %>
+
           <td><%= plant.common_name %></td>
-          <% water = plant.watering_schedule.split("\"") %>
-          <td><%= water[3] %> time(s) per <%= water[7] %></td>
-          <% rotation = plant.rotation_schedule.split("\"") %>
-          <td><%= rotation[3] %> time(s) per <%= rotation[7] %></td>
-          <% fertilize = plant.fertilization_schedule.split("\"") %>
-          <td><%= fertilize[3] %> time(s) per <%= fertilize[7] %></td>
+          <td><%= water['value'] %> time(s) per <%= water['frequency'] %></td>
+          <td><%= rotation['value'] %> time(s) per <%= rotation['frequency'] %></td>
+          <td><%= fertilize['value'] %> time(s) per <%= fertilize['frequency'] %></td>
+
           <td><%= plant.location %></td>
         </tr>
         <% end %>
