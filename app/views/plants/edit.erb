@@ -26,7 +26,7 @@
       <% ["small", "medium", "large"].each do |size| %>
         <option
           <%= 'selected' if @plant.size == size %>
-          value="size"
+          value="<%= size %>"
         >
           <%= size %>
         </option>
@@ -51,7 +51,7 @@
       <% ["day", "week", "month", "season"].each do |freq| %>
         <option
           <%= 'selected' if @plant.watering_schedule['frequency'] == freq %>
-          value="freq"
+          value="<%= freq %>"
         >
           <%= freq %>
         </option>
@@ -76,7 +76,7 @@
     <% ["day", "week", "month", "season"].each do |freq| %>
       <option
         <%= 'selected' if @plant.rotation_schedule['frequency'] == freq %>
-        value="freq"
+        value="<%= freq %>"
       >
         <%= freq %>
       </option>
@@ -101,7 +101,7 @@
     <% ["day", "week", "month", "season"].each do |freq| %>
       <option
         <%= 'selected' if @plant.fertilization_schedule['frequency'] == freq %>
-        value="freq"
+        value="<%= freq %>"
       >
         <%= freq %>
       </option>
