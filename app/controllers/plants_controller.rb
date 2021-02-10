@@ -68,7 +68,8 @@ class PlantsController < ApplicationController
       size: params[:size],
       watering_schedule: params[:watering_schedule],
       rotation_schedule: params[:rotation_schedule],
-      fertilization_schedule: params[:fertilization_schedule]
+      fertilization_schedule: params[:fertilization_schedule],
+      location: params[:location]
     )
     redirect "/plants/#{plant.id}"
   end
