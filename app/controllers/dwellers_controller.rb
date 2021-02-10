@@ -66,5 +66,4 @@ class DwellersController < ApplicationController
       redirect '/'
     end
   end
-
 end

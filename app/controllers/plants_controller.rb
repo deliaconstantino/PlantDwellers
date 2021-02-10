@@ -61,7 +61,15 @@ class PlantsController < ApplicationController
 
   patch '/plants/:id' do
     plant = Plant.find(params[:id])
-    plant.update(common_name: params[:common_name], scientific_name: params[:scientific_name], category: params[:category], size: params[:size], watering_schedule: params[:watering_schedule], rotation_schedule: params[:rotation_schedule], fertilization_schedule: params[:fertilization_schedule])
+    plant.update(
+      common_name: params[:common_name],
+      scientific_name: params[:scientific_name],
+      category: params[:category],
+      size: params[:size],
+      watering_schedule: params[:watering_schedule],
+      rotation_schedule: params[:rotation_schedule],
+      fertilization_schedule: params[:fertilization_schedule]
+    )
     redirect "/plants/#{plant.id}"
   end
 
