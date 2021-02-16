@@ -24,7 +24,7 @@ class DwellersController < ApplicationController
   end
 
   get '/login' do
-    if  Helpers.is_logged_in?(session)
+    if Helpers.is_logged_in?(session)
       @dweller = Helpers.current_user(session)
       redirect "/dwellers/#{@dweller.id}"
     else
@@ -50,7 +50,7 @@ class DwellersController < ApplicationController
       redirect '/login'
     else
       @dweller = Helpers.current_user(session)
-      if @dweller.id == session[:user_id]
+      if @dweller.id == params[:id].to_i
         erb :'dwellers/show'
       else
         redirect '/login'
