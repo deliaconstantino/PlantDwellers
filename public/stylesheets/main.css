@@ -9,9 +9,12 @@
   html, body {
     height: 100%;
     width: 100%;
-    background-image: url('/images/elephant-leaves.jpg');
+    /* background-image: url('/images/elephant-leaves.jpg'); */
+    background-image: url('/images/teemu-paananen-OOE4xAnBhKo-unsplash.jpg');
+
     background-size: cover;
-    background-color: lightblue;
+    background-repeat: repeat;
+    background-color: black;
   }
 
   /* --- Welcome Page Styles --- */

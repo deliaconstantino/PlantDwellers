@@ -28,6 +28,7 @@ class PlantsController < ApplicationController
         fertilization_schedule: params[:fertilization_schedule]
       )
       dweller = Helpers.current_user(session)
+
       if params[:add_to_home] == "yes"
         plant.location = params[:location]
         dweller.plants << plant
